@@ -78,16 +78,14 @@ def test_distance(testf, modelfname):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("USAGE: python {} <clean_pws_tr.csv> <testdir/pass2path....csv>")
-        print("Example: python train_fasttext_rahul.py /hdd/c3s/data/cleaned_email_pass_tr.keyseq.csv ../testdir/test_full_email_100000.txt")
+    if len(sys.argv) < 2:
+        print("USAGE: python {} <clean_pws_tr.csv>")
+        print("Example: python train_fasttext.py /hdd/c3s/data/cleaned_email_pass_tr.keyseq.csv")
         exit(-1)
     train_file = sys.argv[1]
-    test_file = sys.argv[2]
-    # model, mf = train_model(train_file)
-    model, mf = None, "/hdd/c3s/models/fastText2_keyseq_mincount:10_ngram:1-4_negsamp:5_subsamp:0.001"
+    model, mf = train_model(train_file)
     print(model, mf)
-    test_distance(test_file, mf)
+    #test_distance(test_file, mf)
 
 
 
